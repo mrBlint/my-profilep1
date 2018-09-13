@@ -11,17 +11,37 @@ pc = portal.Context()
 request = pc.makeRequestRSpec()
  
 # Add a raw PC to the request.
-node = request.XenVM("node")
-node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
-node.routable_control_ip = "true"
+node = request.XenVM("node1")
+node = request.XenVM("node2")
+node = request.XenVM("node3")
+node = request.XenVM("node4")
+node1.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
+node2.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
+node3.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
+node4.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
+node1.routable_control_ip = "true"
+link = request.LAN("lan")
+link.addInterface(iface1)
+link.addInterface(iface2)
+link.addInterface(iface3)
+link.addInterface(iface4)
+iface1 = node1.addInterface("if1")
+iface1.component_id = "eth1"
+iface1.addAddress(pg.IPv4Address("192.168.1.1","255.255.255.0"))
+link.addInterface(iface2)
+iface2 = node2.addInterface("if1")
+iface2.component_id = "eth1"
+iface2.addAddress(pg.IPv4Address("192.168.1.2","255.255.255.0"))
+link.addInterface(iface3)
+iface3 = node2.addInterface("if1")
+iface3.component_id = "eth1"
+iface3.addAddress(pg.IPv4Address("192.168.1.3","255.255.255.0"))
+link.addInterface(iface4)
+iface4 = node2.addInterface("if1")
+iface4.component_id = "eth1"
+iface4.addAddress(pg.IPv4Address("192.168.1.4","255.255.255.0"))
+
 # Install and execute a script that is contained in the repository.
-<<<<<<< HEAD
-node.addService(pg.Execute(shell="/bin/sh", command="sudo yum -y install git"))
-node.addService(pg.Execute(shell="/bin/sh", command="git clone https://github.com/mrblint/my-profile"))
-node.addService(pg.Execute(shell="/bin/sh", command="my-profile/silly.sh"))
-=======
-node.addService(pg.Install(url="https://github.com/mrblint/my-profile/silly.sh",path="~"))
-node.addService(pg.Execute(shell="/bin/sh", command="~/silly.sh"))
->>>>>>> 9f6dba852e721f9f22c85dcae73788ef26534f30
+node.addService(pg.Execute(shell="/bin/sh", command="sudo local/repository/silly.sh"))
 # Print the RSpec to the enclosing page.
 pc.printRequestRSpec(request)
