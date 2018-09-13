@@ -11,10 +11,10 @@ pc = portal.Context()
 request = pc.makeRequestRSpec()
  
 # Add a raw PC to the request.
-node = request.XenVM("node1")
-node = request.XenVM("node2")
-node = request.XenVM("node3")
-node = request.XenVM("node4")
+node1 = request.XenVM("node1")
+node2 = request.XenVM("node2")
+node3 = request.XenVM("node3")
+node4 = request.XenVM("node4")
 node1.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
 node2.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
 node3.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
