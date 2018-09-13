@@ -27,10 +27,10 @@ iface1.addAddress(pg.IPv4Address("192.168.1.1","255.255.255.0"))
 iface2 = node2.addInterface("if1")
 iface2.component_id = "eth1"
 iface2.addAddress(pg.IPv4Address("192.168.1.2","255.255.255.0"))
-iface3 = node2.addInterface("if1")
+iface3 = node3.addInterface("if1")
 iface3.component_id = "eth1"
 iface3.addAddress(pg.IPv4Address("192.168.1.3","255.255.255.0"))
-iface4 = node2.addInterface("if1")
+iface4 = node4.addInterface("if1")
 iface4.component_id = "eth1"
 iface4.addAddress(pg.IPv4Address("192.168.1.4","255.255.255.0"))
 
