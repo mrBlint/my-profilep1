@@ -1,5 +1,6 @@
 #!/bin/bash
 
-yum -y update
-yum -y install httpd apache
+sudo yum -y update
+sudo yum -y install httpd apache
+sudo systemctl restart httpd.service
 
