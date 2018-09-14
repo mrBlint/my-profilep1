@@ -20,8 +20,9 @@ request = pc.makeRequestRSpec()
 # Add a raw PC to the request.
 node = request.XenVM("node")
 node.disk_image= "urn:publicated:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
+node.routeable_control_ip="true"
 # Install and execute a script that is contained in the repository.
 node.addService(pg.Execute(shell="sh", command="/local/repository/silly.sh"))
-
+node.addService(pg.Execute(shell="sh",command="systemctl restart httpd.service"))
 # Print the RSpec to the enclosing page.
 pc.printRequestRSpec(request)
