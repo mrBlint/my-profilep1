@@ -1,4 +1,10 @@
+"""This is a description of your profile, it can be multi-line.
+Every profile must include a description. 
 
+Instructions:
+These are instructions for using your profile after it is instantiated.
+Instructions are optional.
+"""	
 # Import the Portal object.
 import geni.portal as portal
 # Import the ProtoGENI library.
